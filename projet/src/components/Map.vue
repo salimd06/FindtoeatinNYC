@@ -40,14 +40,7 @@ export default {
     
   },
   mounted(){
-    //console.log("holag")
     console.log(this.center);
-      //this.center=this.$refs.center
-      //console.log("holag"+this.center)
-      //this.markerLatLng= this.$refs.center
-      //this.centerUpdated(this.center);
-    // console.log(this.)
-
     
     },
     methods: {
@@ -59,7 +52,6 @@ export default {
         },
         Setmarker(center){
             this.markerLatLng = center;
-             //console.log("la marque est "+ center)
         }
     }
 }

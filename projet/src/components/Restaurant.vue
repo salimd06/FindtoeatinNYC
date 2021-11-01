@@ -1,25 +1,62 @@
 <template>
 
 
-  <div class="hello">
-
-      
-        <h1>Détail du restaurant qui a pour id : {{id}} </h1>
-
-        <li> Nom :  {{restaurant.name}} </li>
+  <div class="vuegeneral">
+    <div class="info">
+ 
+        <h2 class="titrerestau"> {{restaurant.name}} </h2>
        
-       <li> Ville :  {{restaurant.borough}} </li>
-  <Map ref="map"/>
+        <p> Situé à  {{restaurant.borough}} </p>
+    </div>
+    <HelloWorld/>
+    <Image/>
+  <div class="carte">
+    <p>localisation : </p>
+     <Map ref="map"/>
+      
+  </div>
+
+
   </div>
 </template>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.vuegeneral{
+  justify-content: center; 
+   align-items: center;
+   display: flex; 
+}
+
+.carte{
+  width:50%;
+  margin-left:450px;
+}
+
+.titrerestau{
+  display: flex; 
+  justify-content: center; 
+   align-items: center;
+}
+
+.info{
+   
+   justify-content: center; 
+   align-items: center;
+}
+</style>
+
 <script>
 import Map from './Map.vue'
+import Image from './Image.vue'
+import HelloWorld from './HelloWorld.vue'
 
 export default {
   name: 'Restaurant',
   components: {
       Map,
+      Image,
+      HelloWorld,
   },
   props: {
 
@@ -73,7 +110,4 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
 
-</style>

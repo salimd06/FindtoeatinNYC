@@ -5,7 +5,6 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import VueRouter from 'vue-router'
 
-
 //import VueGeolocation from 'vue-browser-geolocation'
 
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';

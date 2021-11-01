@@ -40,15 +40,11 @@ export default {
     
   },
   mounted(){
-    console.log(this.center);
-    
+
     },
     methods: {
         centerUpdated(center){
-            
             this.center = center
-            
-            console.log(this.center)
         },
         Setmarker(center){
             this.markerLatLng = center;

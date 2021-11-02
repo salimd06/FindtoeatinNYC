@@ -13,11 +13,11 @@
             <md-input name="name" type="text" required v-model="nom" />
           </md-field>
           <md-field>
-            <label> Cuisine : </label
-            ><md-input name="cuisine" type="text" required v-model="cuisine" />
+            <label> Cuisine : </label>
+            <md-input name="cuisine" type="text" required v-model="cuisine" />
           </md-field>
 
-          <md-button>Ajouter</md-button>
+          <md-button type = submit() >Ajouter</md-button>
         </md-card>
       </form>
       <form class="recherche">

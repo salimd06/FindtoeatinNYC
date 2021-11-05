@@ -1,32 +1,24 @@
 <template> 
   <div class="global">
-    <div class="menu">
-      <h2>{{ msg }}</h2>
-      <form class="ajouter" v-on:submit.prevent="ajouterRestaurant(event)">
-        <md-card class="mdcardajout">
-          <md-card-header>
-            <div class="md-title">Ajout de restaurant</div>
-          </md-card-header>
+   
+    <div class = "header">  
+    
+      <section class="barMenu">
+        <md-menu md-size="small">
+          <md-button md-menu-trigger>Master 1 MIAGE</md-button>
+        </md-menu>
 
-          <md-field>
-            <label> Nom : </label>
-            <md-input name="name" type="text" required v-model="nom" />
-          </md-field>
-          <md-field>
-            <label> Cuisine : </label>
-            <md-input name="cuisine" type="text" required v-model="cuisine" />
-          </md-field>
+        <md-menu md-size="medium">
+          <md-button md-menu-trigger>7'O Restaurant</md-button>
+        </md-menu>
 
-          <md-button type = submit() >Ajouter</md-button>
-        </md-card>
-      </form>
-      <form class="recherche">
-        <md-card class="mdcartrecherche">
-          <md-card-header>
-            <div class="md-title">Paramètre de recherche</div>
-          </md-card-header>
+        <md-menu md-size="big">
+          <md-button md-menu-trigger>restaurant</md-button>
+        </md-menu>
+
+        <md-menu md-size = "auto">
           <md-field>
-            <label> Chercher par nom :</label>
+            <label><md-icon>search</md-icon> Chercher par nom :</label>
             <md-input
               @input="chercherRestaurants"
               type="texte"
@@ -34,18 +26,37 @@
               v-model="nomRestauRecherche"
             />
           </md-field>
-          <p>
-            Nb restaurants par page
-            <input
-              @input="getRestaurantsFromServeur()"
-              type="range"
-              min="2"
-              max="100"
-              value="10"
-              v-model="pagesize"
-            />{{ pagesize }}
-          </p>
-        </md-card>
+        </md-menu>
+      </section>
+    </div>
+
+    <div class="menu">
+      <div class="test">
+        <md-button v-on:click="show" style="background-color : #44C49A;">Ajouter un restaurant<md-icon>add</md-icon></md-button>
+        <div v-if="isDisplay">
+          <form class="ajouter" v-on:submit.prevent="ajouterRestaurant(event)">
+            <md-card class="mdcardajout">
+              <md-card-header>
+                <div class="md-title">Ajout de restaurant</div>
+              </md-card-header>
+
+              <md-field>
+                <label> Nom : </label>
+                <md-input name="name" type="text" required v-model="nom" />
+              </md-field>
+              <md-field>
+                <label> Cuisine : </label>
+                <md-input name="cuisine" type="text" required v-model="cuisine" />
+              </md-field>
+
+              <md-button type = submit() >Ajouter</md-button>
+              <md-button v-on:click="hide">Fermer</md-button>
+            </md-card>
+          </form>
+        </div>
+      </div>
+    
+      <form class="recherche">
         <md-card class="mdinfo">
           <md-card-header>
             <div class="md-title">Information</div>
@@ -57,7 +68,18 @@
       </form>
     </div>
     <div class="lesrestaurant">
-      <div class="suivantprec">
+    <div class="nbPage" style = " background-color : white; width : 350px;"><center>
+            Nb restaurants par page
+            <input
+              @input="getRestaurantsFromServeur()"
+              type="range"
+              min="2"
+              max="12"
+              value="10"
+              v-model="pagesize"
+            />{{ pagesize }}
+          </center></div>
+          <div class="suivantprec">
         <md-button
           class="md-raised"
           :disable="page === 0"
@@ -71,6 +93,7 @@
         >
           Suivant
         </md-button>
+        
       </div>
       <md-table v-model="restaurants">
         <md-table-row
@@ -91,12 +114,13 @@
           <md-table-cell md-label="Action" class="DetailRestau" tag="li"
             ><b-button pill variant="outline-secondary"
               ><router-link :to="'/restaurant/' + item._id" class="active"
-                >Detail d'un restaurant</router-link
+                >Details</router-link
               ></b-button
             ></md-table-cell
           >
         </md-table-row>
       </md-table>
+      
       <md-dialog-alert
         :md-active="AucunRestaurant"
         @click="RechercheA0()"
@@ -110,10 +134,32 @@
 <style>
 
 
+.nbPage{
+  height : 30px;
+  margin-top : 10%;
+  position:relative;
+  right:50%;
+  float:right;
+}
+.barMenu{
+  background-color : white;
+  position: fixed;
+  width: 2000px;
+  float :right;
+
+}
+
+.global{
+  background-image:url(../assets/RestoFond.jpg);
+  height : 100%;
+  width : 100%;
+}
 .md-table {
   width: 1100px;
   margin-left: 80px;
   background-color: grey;
+  margin-top : 0%;
+  margin-bottom : 10%;
 }
 
 .md-table-cell{
@@ -133,8 +179,13 @@ nav li:active {
 }
 
 .suivantprec {
-  margin-left: 520px;
-  margin-top: 12%;
+  margin-left: 720px;
+  margin-top: 10%;
+  
+}
+
+.md-raised{
+  margin-right : 20px;
 }
 
 .menu {
@@ -142,6 +193,7 @@ nav li:active {
   margin-top: 10%;
   width: 30%;
   height: 500px;
+  margin-top : 15%;
 }
 
 .md-field {
@@ -161,6 +213,7 @@ nav li:active {
 .mdinfo {
   padding-left: 10%;
   padding-bottom: 5%;
+  margin-top : 10%;
 }
 
 .global {
@@ -192,7 +245,11 @@ h1 {
 <script>
 import _ from "lodash";
 
+
+
 export default {
+
+  
   name: "ListeDesRestaurants",
   data: function () {
     return {
@@ -207,6 +264,7 @@ export default {
       msg: "",
       nomRestauRecherche: "",
       AucunRestaurant: false,
+      isDisplay: false,
     };
   },
   mounted() {
@@ -309,8 +367,19 @@ export default {
     RechercheA0() {
       this.AucunRestaurant = false;
     },
+    show: function () {
+      this.isDisplay = true;
+    },
+    hide: function () {
+      this.isDisplay = false;
+    }
+    
   },
 };
+
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

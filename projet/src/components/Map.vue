@@ -1,5 +1,7 @@
 <template>
-  <l-map style="height: 300px" :zoom="zoom" :center="center" @update:center="centerUpdated"
+
+
+  <l-map style="height: 300px;" :zoom="zoom" :center="center" @update:center="centerUpdated"
      @update:markerLatIng="Setmarker">
     
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
@@ -8,18 +10,15 @@
 </template>
 
 <script>
-
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import { Icon } from 'leaflet';
 import "leaflet/dist/leaflet.css"
-
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
-
 export default {
   name:'Map',
   components: {
@@ -40,7 +39,6 @@ export default {
     
   },
   mounted(){
-
     },
     methods: {
         centerUpdated(center){

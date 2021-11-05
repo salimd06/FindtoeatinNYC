@@ -1,21 +1,38 @@
 <template>
 
+<div>
+<section class="barMenu">
+        <md-menu md-size="small">
+          <md-button md-menu-trigger>Master 1 MIAGE</md-button>
+        </md-menu>
 
+        <md-menu md-size="medium">
+          <md-button md-menu-trigger>7'O Restaurant</md-button>
+        </md-menu>
+
+        <md-menu md-size="big">
+          <md-button md-menu-trigger>restaurant</md-button>
+        </md-menu>
+
+      </section>
   <div class="vuegeneral">
-    <div class="info">
+  
+    <div class="info" style ="margin-top : 5%; margin-left : 2%;">
  
         <h2 class="titrerestau"> {{restaurant.name}} </h2>
        
-        <p> Situé à  {{restaurant.borough}} </p>
+        <p><md-icon>room</md-icon> Situé à  {{restaurant.address.street}},{{restaurant.borough}}  {{restaurant.address.zipcode}}
+        </p>
+        <Imageres/>
+        <p><md-card class="note"><md-field>Note du restaurant :</md-field> <h2>{{restaurant.grades[0].grade}}</h2></md-card></p>
     </div>
-  <div class="carte">
-    <p>localisation : </p>
+    
+    
+  <div class="carte" style = "margin-top : 4%; margin-right : 4%;">
      <Map ref="map"/>
-      <Imageres/>
   </div>
-
-
-  </div>
+  </div></div>
+  
 </template>
 
 
@@ -23,7 +40,6 @@
 <script>
 import Map from './Map.vue'
 import Imageres from './ImageRes.vue'
-
 export default {
   name: 'Restaurant',
   components: {
@@ -31,7 +47,6 @@ export default {
       Imageres
   },
   props: {
-
   },
   computed: {
       id() {
@@ -66,7 +81,6 @@ export default {
       this.$refs.map.Setmarker(center)
         
     },
-
   }
 }
 </script>
@@ -78,22 +92,27 @@ export default {
   justify-content: center; 
    align-items: center;
    display: flex; 
+   background-color : grey;
 }
-
 .carte{
   width:50%;
   margin-left:450px;
 }
-
 .titrerestau{
   display: flex; 
   justify-content: center; 
    align-items: center;
+   font-style : oblique;
 }
-
 .info{
    
    justify-content: center; 
    align-items: center;
 }
+.note{
+  width : 40%;
+  
+}
+  
+
 </style>

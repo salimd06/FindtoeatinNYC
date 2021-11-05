@@ -1,5 +1,6 @@
 <template>
   <div id="app" v-bind:style="{ backgroundColor: color}">
+  
     <!--<router-link to="/">Accueil</router-link>
     <router-link to="/restaurant">[Détail d'un restaurant]</router-link>
   -->
@@ -15,7 +16,7 @@ export default {
   },
   data: function() {
       return {
-          color: '#673AB7'
+          color: 'grey'
       }
   }
 }
@@ -31,7 +32,7 @@ export default {
 }
 
 html, body {
-  height: 100%;
+  height: 50%;
   width:100%;
  margin: 0;
   padding: 0;

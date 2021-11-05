@@ -17,14 +17,14 @@
       </section>
   <div class="vuegeneral">
   
-    <div class="info" style ="margin-top : 5%; margin-left : 2%;">
+    <div class="info" style ="margin-top : 5%; margin-left : 2%; border : outset;">
  
         <h2 class="titrerestau"> {{restaurant.name}} </h2>
        
         <p><md-icon>room</md-icon> Situé à  {{restaurant.address.street}},{{restaurant.borough}}  {{restaurant.address.zipcode}}
         </p>
         <Imageres/>
-        <p><md-card class="note"><md-field>Note du restaurant :</md-field> <h2>{{restaurant.grades[0].grade}}</h2></md-card></p>
+        <md-field>Note du restaurant :</md-field> <h2 style= "font-family: cursive;">{{restaurant.grades[0].grade}}</h2>
     </div>
     
     

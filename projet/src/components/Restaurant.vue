@@ -17,20 +17,19 @@
       </section>
   <div class="vuegeneral">
   
-    <div class="info" style ="margin-top : 5%; margin-left : 2%; border : outset;">
+    <center><div class="info" style ="margin-top : 10%; margin-left : 2%; border : outset;">
  
-        <h2 class="titrerestau"> {{restaurant.name}} </h2>
+        <h2 class="titrerestau" style= "font-family: cursive;"> {{restaurant.name}} </h2>
        
         <p><md-icon>room</md-icon> Situé à  {{restaurant.address.street}},{{restaurant.borough}}  {{restaurant.address.zipcode}}
         </p>
         <Imageres/>
         <md-field>Note du restaurant :</md-field> <h2 style= "font-family: cursive;">{{restaurant.grades[0].grade}}</h2>
-    </div>
+        <div><Map ref="map"/></div>
+    </div></center>
     
     
-  <div class="carte" style = "margin-top : 4%; margin-right : 4%;">
-     <Map ref="map"/>
-  </div>
+  
   </div></div>
   
 </template>

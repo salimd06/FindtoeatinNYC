@@ -28,8 +28,8 @@
         <div><Map ref="map"/></div>
     </div></center>
     
-    
-  
+    <CarteRestaurant class="CarteRestaurant" />
+   <!--  <MenuRestaurant/> -->
   </div></div>
   
 </template>
@@ -39,11 +39,16 @@
 <script>
 import Map from './Map.vue'
 import Imageres from './ImageRes.vue'
+import CarteRestaurant from './CarteRestaurant.vue'
+//import MenuRestaurant from './MenuRestaurant.vue'
+
 export default {
   name: 'Restaurant',
   components: {
       Map,
-      Imageres
+      Imageres,
+      CarteRestaurant,
+     // MenuRestaurant
   },
   props: {
   },
@@ -113,5 +118,8 @@ export default {
   
 }
   
+.CarteRestaurant{
+  margin-left:50px;
+}
 
 </style>

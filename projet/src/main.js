@@ -12,7 +12,7 @@ import 'leaflet/dist/leaflet.css';
 
 
 import ListeDesRestaurants from './components/ListeDesRestaurants.vue'
-import HelloWorld from './components/HelloWorld.vue'
+
 import Restaurant from './components/Restaurant.vue'
 
 
@@ -44,13 +44,6 @@ const router = new VueRouter({
     {
       path : '/',
       component: ListeDesRestaurants
-    },
-    {
-      path : '/hello',
-      component: HelloWorld,
-      props:{
-        msg : "Coucou la Miage !"
-      }
     },
     {
       path : '/restaurant/:id',
